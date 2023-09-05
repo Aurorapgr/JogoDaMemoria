@@ -10,6 +10,10 @@ const Card = 'card' ;
 
 startGame()
 
+let a = document.getElementById('restart');
+a.addEventListener('click', restart)
+
+
 
 function startGame(){
     let cards = game.createCardsFromFotos();
@@ -20,7 +24,7 @@ function startGame(){
 
 function initializeCards(cards){
     let board = document.getElementById("gameBoard");
-
+    board.innerHTML = ''
     cards.forEach((card)=>{ 
         let cardElement = document.createElement('div');
         cardElement.id = card.id;
@@ -75,6 +79,12 @@ function flipCard(){
             };
         }
     }
+}
+
+function restart(){
+    startGame();
+    let a = document.querySelector('.backDrop');
+    a.style.zIndex = -1;
 }
 
 

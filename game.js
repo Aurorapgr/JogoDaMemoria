@@ -19,7 +19,6 @@ let game ={
     ],
     setCard: function(id){
         let card = this.cards.filter(card => card.id === id)[0];
-
         if(card.flipped || this.lockMode){
             return false
         };
@@ -35,6 +34,7 @@ let game ={
         }
     },
     checkMatch: function(){
+        this.checkGameOver()
         console.log(this.firstCard)
         console.log(this.secondCard)
         if(!this.firstCard || !this.secondCard){
@@ -74,6 +74,16 @@ let game ={
             flipped: false
         }]
     },
+    checkGameOver(){
+        let card = this.cards.filter(card=>!card.flipped);
+        console.log(card);
+        if(card.length == 0){
+            let a = document.querySelector('.backDrop');
+            a.style.zIndex = 3;
+        };
+    },
+  
+
     createIdWithFoto: (foto)=>{
         return foto + parseInt(Math.random() * 1000)
     },
